@@ -1,22 +1,25 @@
 package cz.uhk.merapp.data;
 
+import cz.uhk.util.Seznam;
+import cz.uhk.util.impl.SpojovySeznam;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Mereni {
     //atribut  agregace s Number 1:N
-    private List<Number> data = new ArrayList<>();
+    private Seznam<Number> data = new SpojovySeznam<>();
 
     public void pridejMereni(Number m){
-        data.add(m);    //delegace
+        data.pridej(m);    //delegace
     }
 
     public Number get(int index){
-        return data.get(index);
+        return data.vrat(index);
     }
 
     public int pocet() {
-        return data.size();
+        return data.pocet();
     }
 
     public Number soucet(){
@@ -29,12 +32,12 @@ public class Mereni {
     }
 
     public Number prumer(){
-        return soucet().doubleValue() / data.size();
+        return soucet().doubleValue() / data.pocet();
     }
 
 
     public Number max(){
-        Number max = data.get(0); // int nebo Integer
+        Number max = data.vrat(0); // int nebo Integer
         for (var c : data)
         {
             if(c.doubleValue() > max.doubleValue())
@@ -46,7 +49,7 @@ public class Mereni {
     }
 
     public Number min(){
-        Number min = data.get(0); // int nebo Integer
+        Number min = data.vrat(0); // int nebo Integer
         for (var c : data)
         {
             if(c.doubleValue() < min.doubleValue())
