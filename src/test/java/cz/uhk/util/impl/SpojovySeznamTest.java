@@ -22,6 +22,12 @@ class SpojovySeznamTest {
     }
 
     @Test
+    void pridejPozici (){
+        initData();
+        assertEquals(4, seznam.pocet());
+    }
+
+    @Test
     void smaz() {
         initData();
         seznam.smaz(1);
