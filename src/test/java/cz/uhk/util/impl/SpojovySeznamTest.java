@@ -22,9 +22,20 @@ class SpojovySeznamTest {
     }
 
     @Test
-    void pridejPozici (){
+    void pridejNaPozici (){
         initData();
-        assertEquals(4, seznam.pocet());
+        seznam.pridej(5,0);
+        assertEquals(5, seznam.pocet());
+        assertEquals(5, seznam.vrat(0));
+
+        seznam.pridej(25,3);
+        assertEquals(6, seznam.pocet());
+        assertEquals(25, seznam.vrat(3));
+
+        seznam.pridej(99,6);
+        assertEquals(7, seznam.pocet());
+        assertEquals(99, seznam.vrat(6));
+
     }
 
     @Test

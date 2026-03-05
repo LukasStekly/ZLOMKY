@@ -25,23 +25,39 @@ public class SpojovySeznam<E> implements Seznam<E> {
 
     }
 
-    public void pridejPozici(E hodnota,int pozice) {
-        var novy = new PrvekSeznamu<E>(hodnota);
-        PrvekSeznamu<E> aktualni = prvni;
+    public void pridej(E hodnota,int pozice) {
 
-        if (pozice == 0){
-            novy.dalsi = prvni;
-            prvni = novy;
-
-        }
-
-        else {
-            for (int i = 0; i < pozice - 1; i++) {
-                novy.dalsi = aktualni.dalsi;
-                aktualni.dalsi = novy;
+            if (pozice < 0) {
+                throw new IndexOutOfBoundsException("Pozice nesmí být záporná.");
             }
 
-        }
+            var novy = new PrvekSeznamu<E>(hodnota);
+
+            if (pozice == 0) {
+
+                novy.dalsi = prvni;
+                prvni = novy;
+
+                if (posledni == null){
+                    posledni = prvni;
+                }
+
+            }
+            else {
+                var predchozi = vratPrvek(pozice - 1);
+
+                if (predchozi == null) {
+                    throw new IndexOutOfBoundsException("Pozice je mimo rozsah seznamu.");
+                }
+
+                novy.dalsi = predchozi.dalsi;
+                predchozi.dalsi = novy;
+
+                if (novy.dalsi == null) {
+                    posledni = novy;
+                }
+            }
+
 
     }
 
