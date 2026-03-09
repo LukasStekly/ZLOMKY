@@ -36,6 +36,23 @@ class SpojovySeznamTest {
         assertEquals(7, seznam.pocet());
         assertEquals(99, seznam.vrat(6));
 
+
+        seznam.pridej(-88, 1);
+        assertEquals(8, seznam.pocet());
+        assertEquals(-88, seznam.vrat(1));
+
+        //
+
+
+        /**
+         * pro testování, jestli detekce chyb funguje
+         *  chyba - záporná pozice
+         *  seznam.pridej(0, -5);
+         *
+         *  chyba - pozice je mimo rozsah seznamu.
+         * seznam.pridej(100, 100);
+         */
+
     }
 
     @Test
