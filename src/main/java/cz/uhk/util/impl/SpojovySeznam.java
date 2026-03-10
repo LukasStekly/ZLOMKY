@@ -27,11 +27,11 @@ public class SpojovySeznam<E> implements Seznam<E> {
 
     public void pridej(E hodnota,int pozice) {
 
-            if (pozice < 0) {
-                throw new IndexOutOfBoundsException("Pozice nesmí být záporná.");
-            }
-
             var novy = new PrvekSeznamu<E>(hodnota);
+
+            if (pozice < 0) {
+                throw new IndexOutOfBoundsException("Pozice nesmí být záporná (není možné).");
+            }
 
             if (pozice == 0) {
 
@@ -43,11 +43,12 @@ public class SpojovySeznam<E> implements Seznam<E> {
                 }
 
             }
+
             else {
                 var predchozi = vratPrvek(pozice - 1);
 
                 if (predchozi == null) {
-                    throw new IndexOutOfBoundsException("Pozice je mimo rozsah seznamu.");
+                    throw new IndexOutOfBoundsException("Pozice je mimo rozsah seznamu. (přesahl moznou kapacitu/pozici)");
                 }
 
                 novy.dalsi = predchozi.dalsi;
